@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite + TS</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: white;
+    }
+
+    #scene-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    #add-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    #remove-button {
+      position: absolute;
+      top: 10px;
+      right: 100px;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="scene-container"></div>
+  <button id="add-button">Add Brick</button>
+  <button id="remove-button">Clear Brick</button>
+  <script type="module">
+    import init from "/src/main.ts"
+
+    const { addBlock, clearBlock } = init({
+      container: document.getElementById("scene-container"),
+      autoRotate: true,
+      onClickBlock: (cube) => {
+        console.log("cube", cube);
+      },
+    });
+
+    document.getElementById("add-button").onclick = addBlock;
+    document.getElementById("remove-button").onclick = clearBlock;
+
+  </script>
+
+</body>
+
+</html>
